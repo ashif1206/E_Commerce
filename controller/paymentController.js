@@ -1,10 +1,12 @@
 import { handleResponse } from "../helper/handleResponse.js";
 import "dotenv/config";
-import { instance } from "../server.js";
 import crypto from 'crypto'
+import Razorpay from 'razorpay'
+import { instance } from "../server.js";
 
 export const processPayment = async (req,res)=>{
      try{
+   
         const options ={
             amount:Number(req.body.amount * 100),
             currency:"INR"

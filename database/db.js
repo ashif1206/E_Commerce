@@ -1,11 +1,12 @@
 import mongoose from "mongoose";
+import  'dotenv/config'
+
 
 const str = process.env.DBCONNECTSTR
 
 async function dbConnectFnc() {
     try{
         if(str){
-            console.log("Hello")
             const conn = await mongoose.connect(str)
             if(conn){
                 console.log("MongoDB Connected Successfully!!!")

@@ -1,5 +1,4 @@
 import express from 'express'
-// import  'dotenv/config'
 import dbConnectFnc from './database/db.js';
 import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
@@ -14,12 +13,14 @@ import {fileURLToPath} from 'url';
 import dotenv from "dotenv";
 
 
+
 const __fileName = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__fileName);
 
 const app = express();
 
 const PORT = process.env.PORT || 4000  ;
+
 
 
 cloudinary.config({
@@ -43,13 +44,11 @@ app.get(/.*/,(_,res)=>{
     res.sendFile(path.resolve(__dirname,'../frontEnd/dist/index.html'));
 });
 
-console.log(process.env.RAZORPAY_API_KEY)
-console.log(process.env.RAZORPAY_API_SECRET)
-
-export const instance = new Razorpay({
-    key_id:"hello",
-    key_secret:"hel123"
+ export  const instance = new Razorpay({
+    key_id:process.env.RAZORPAY_API_KEY,
+    key_secret:process.env.RAZORPAY_API_SECRET
 });
+
 
 if(process.env.NODE_ENV !== "PRODUCTION"){
     dotenv.config({ path: path.resolve(__dirname, ".env") });
