@@ -150,7 +150,7 @@ export const forgotPassword = async (req,res)=>{
 
     await user.save({validateBeforeSave:false});
 
-    const resetURL = `${req.protocol}://${req.get("host")}/reset/password/${generateToken}`; //*GALAT ROUTES
+    const resetURL = `${req.protocol}://${req.get("host")}/reset/password/${generateToken}`;
 
     const message = `Use the following link to reset your password: ${resetURL} \n\n
     This link will expire in 30 minutes.\n\n If you didn't request,Please ignore this message.`

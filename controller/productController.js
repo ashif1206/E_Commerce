@@ -44,6 +44,7 @@ export const createProduct = async (req, res) => {
         message: "All Feilds are required!!!",
       });
     }
+    // first check image is 1 or multiple, if multiple means its an array
     let images =[];
     if(typeof image === "string"){
       images.push(image)
